@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/vue.js"></script>
+<script src="js/axios.js"></script>
+</head>
+<body>
+	<div id="user">
+		<div style="padding:10px">
+			name:<input type="text" v-model="user.name"/>
+			age:<input type="text" v-model="user.age"/>
+			logName:<input type="text" v-model="user.logName"/>
+		</div>
+		<div>
+			<table style="border-left:1px solid #000;border-bottom:1px solid #000;" cellpadding="0" cellspacing="0">
+				<tr v-for="(u,index) in ulist">
+					<td style="border-right:1px solid #000; border-top:1px solid #000;width:100px;">{{u.id}} - {{ index }}</td>
+					<td style="border-right:1px solid #000;border-top:1px solid #000;width:100px;">{{u.name}}</td>
+					<td style="border-right:1px solid #000;border-top:1px solid #000;width:100px;">{{u.age}}</td>
+					<td style="border-right:1px solid #000;border-top:1px solid #000;width:100px;">{{u.logName}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+<script>
+var v= new Vue({
+    el: '#user',
+    data: {
+    	user: "",
+    	ulist:''
+    },
+    mounted: function() {
+        this.$nextTick(function () {
+        	axios.post('/user/query/1').then(function(res) {
+                console.log(res.data)
+                v.user = res.data;
+            });
+            axios.post('/user/list').then(function(res) {
+            	  console.log(res.data)
+                v.ulist = res.data;
+            });
+        })
+    },
+  })
+</script>
+</html>
