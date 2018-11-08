@@ -1,6 +1,5 @@
 package com.tomtop.pdf.controller;
 
-import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class PdfController {
 			String url = pdf.getUrl();//pdf远程url
 			orderNo = pdf.getOrderNo();
 			System.out.println("printerName:" + printerName + ", orderNo:" + orderNo);
-			if(null == printerName || url == null || orderNo == null) {
+			if(null == printerName || null == url || null == orderNo) {
 				System.out.println("参数不能为空");
 				return false;
 			}
