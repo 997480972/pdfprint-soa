@@ -4,6 +4,8 @@ public class PdfParam {
 	private String url;
 	private String orderNo;
 	private String printerName;
+	private int dpi; //打印机分辨率。DPI是指每英寸可打印的点数
+	
 	public String getUrl() {
 		return url;
 	}
@@ -22,8 +24,16 @@ public class PdfParam {
 	public void setPrinterName(String printerName) {
 		this.printerName = printerName;
 	}
+	public int getDpi() {
+		return dpi;
+	}
+	public void setDpi(int dpi) {
+		this.dpi = dpi;
+	}
 	@Override
 	public String toString() {
-		return "PdfParam [url=" + url + ", orderNo=" + orderNo + ", printerName=" + printerName + "]";
+		return "PdfParam [url=" + url + ", orderNo=" + orderNo
+				+ ", printerName=" + printerName + ", dpi=" + dpi + "]";
 	}
+	
 }
